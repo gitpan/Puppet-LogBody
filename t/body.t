@@ -6,7 +6,7 @@
 # Change 1..1 below to 1..last_test_to_print .
 # (It may become useful if the test is moved to ./t subdirectory.)
 
-BEGIN { $| = 1; print "1..7\n"; }
+BEGIN { $| = 1; print "1..8\n"; }
 END {print "not ok 1\n" unless $loaded;}
 use Tk ;
 use ExtUtils::testlib;
@@ -26,13 +26,14 @@ use strict ;
 my $toto ;
 
 print "Creating new log\n" if $trace ;
-my $log = new Puppet::LogBody(name => 'log test') ;
+my $log = new Puppet::LogBody(name => 'log test', how => 'print') ;
 
 print "ok ",$idx++,"\n";
 
-my @str = ("1/ This text was logged but not printed",
+my @str = ("1/ This text was logged and printed by default",
            "2/ This text was logged and warned",
-           "3/ This text was also logged and printed");
+           "3/ This text was also logged and printed (with how)",
+           "1/ This text was logged but not printed",);
 
 print "inserting some text in log\n" if $trace ;
 
@@ -42,20 +43,22 @@ print "ok ",$idx++,"\n";
 $log -> log($str[1] ,'how' => 'warn')  ;
 print "ok ",$idx++,"\n";
 
-$log -> log($str[2] ,'how' => 'print') if $trace ;
+$log -> log($str[2] ,'how' => 'print') ;
+print "ok ",$idx++,"\n";
+
+$log -> log($str[3] ,'how' => undef);
 print "ok ",$idx++,"\n";
 
 my @res =  $log->getAll() ;
 print @res  if $trace ;
 chomp @res ;
-my @expect = $trace ? @str: @str[0,1] ;
-print "not " unless join('',@res) eq join('',@expect);
+print "not " unless join('',@res) eq join('',@str);
 print "ok ",$idx++,"\n";
 
 $log->clear() ;
 
 my $str = "1b/ This text was logged again but not printed" ;
-$log -> log($str) ;
+$log -> log($str ,'how' => undef) ;
 @res =   $log->getAll() ;
 print @res  if $trace ;
 chomp @res ;

@@ -1,10 +1,10 @@
 ############################################################
 #
-# $Header: LogBody.pm,v 1.1 99/01/04 13:49:28 domi Exp $
+# $Header: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_LogBody/RCS/LogBody.pm,v 1.2 1999/08/10 12:39:59 domi Exp $
 #
-# $Source: /home/domi/Tools/perlDev/Puppet_LogBody/RCS/LogBody.pm,v $
-# $Revision: 1.1 $
-# $Locker: domi $
+# $Source: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_LogBody/RCS/LogBody.pm,v $
+# $Revision: 1.2 $
+# $Locker:  $
 # 
 ############################################################
 
@@ -15,7 +15,7 @@ use Carp ;
 use strict ;
 use vars qw($VERSION) ;
 
-$VERSION = sprintf "%d.%03d", q$Revision: 1.1 $ =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%03d", q$Revision: 1.2 $ =~ /(\d+)\.(\d+)/;
 
 # see loadspecs for other names
 sub new 
@@ -39,7 +39,7 @@ sub log
     my $text = shift ;
     my %args = @_ ;
 
-    my $how = $args{'how'} || $self->{how};
+    my $how = exists $args{'how'} ? $args{how} : $self->{how};
 
     chomp ($text) ;
     $text .= "\n";
@@ -80,12 +80,16 @@ Puppet::LogBody - Log facility
 
  use Puppet::LogBody ;
 
- my $log = new Puppet::LogBody ( name => 'log test', 'how' => 'print') ;
+ my $log = new Puppet::LogBody 
+  ( 
+   name => 'log test', 
+   'how' => 'print'
+  ) ;
 
  $log -> log("hello")  ;                 # printed on STDOUT
  $log -> log("world",'how' => 'warn')  ; # printed on STDERR
 
- my @a = $log-> getAll() ;               # @a contains ['hello','world']
+ my @a = $log-> getAll() ; # @a contains ['hello','world']
 
 =head1 DESCRIPTION
 
@@ -96,31 +100,52 @@ retrieved later by the user.
 
 =head1 Constructor
 
-=head2 new ([name => 'name'], ['how' => 'print' | 'warn' ])
+=head2 new (...)
 
-Creates the log object. 'name' is the log name that will be printed on
-STDERR or STDOUT at each log.
+Creates the log object. 
+
+Parameters are
+
+=over 4
+
+=item *
+
+name: is the log name that will be printed on STDERR or STDOUT at each
+log. (optional)
+
+
+=item *
+
+how: specifies what  to do when a log   is sent to the  object (either
+print  on STDOUT, warn  on  STDERR). By default  the logs  will not be
+printed or warned.
+
+=back
 
 For instance if name is set to 'foo' a call to log('hello') will print:
 
  foo:
        hello
 
-The 'how' parameter specifies what to do when a log is sent to the
-object  (either print on STDOUT, warn on STDERR). By default the logs will 
-not be printed or warned.
-
 =head1 Methods
 
 As Puppet::LogBody inherits from Puppet::Log, all the parent methods are 
 available. 
 
-=head2 log(text,['how' => 'print' | 'warn' ])
+=head2 log(text,...)
 
 Will log the passed text
 
-The 'how' parameter will supersede the 'how' parameter passed to the
-constructor.
+Optional parameters are:
+
+=over 4
+
+=item *
+
+how: will supersede the 'how' parameter passed to the constructor. If
+'how' is set to undef, the log will not be printed or warned.
+
+=back
 
 =head2 clear()
 
