@@ -1,0 +1,51 @@
+
+This class implements a log facility which can either print on STDOUT
+or warn on STDERR (or hide) the log message. But in any case, the log
+message will be stored in the class so that all log messages can be
+retrieved later by the user.
+
+Suggested DSLI entry :
+Puppet::
+  LogBody          bdpO  Logging facility                    DDUMONT
+
+Note:
+
+This class does *not* use Tk. If you want a Tk based log facility, you
+can use Puppet::Log instead, they have the same interface.
+
+About Puppet body classes
+
+Puppet classes are a set of utility classes which can be used by any object.
+If you use directly the Puppet::*Body class, you get the plain functionnality.
+And if you use the Puppet::* class, you can get the same functionnality and
+a Tk Gui to manage it. 
+
+See the embedded documentation in the module for more details.
+
+Comments and suggestions are always welcome.
+
+Legal mumbo jumbo:
+
+ Copyright (c) 1998-1999 Dominique Dumont. All rights reserved.
+ This program is free software; you can redistribute it and/or
+ modify it under the same terms as Perl itself.
+ 
+
+ - Dominique Dumont
+   dominique_dumont@grenoble.hp.com
+
+---------------------------------------------------------------------
+INSTALLATION
+
+   	 gunzip -c <dist_file>.tar.gz | tar xvf -
+   	 cd <dist_directory>
+   	 perl Makefile.PL
+   	 make test          
+   	 make install
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+v 0.5 1998-11-25  Dominique Dumont  <domi@barrayar.grenoble.hp.com>
+
+	* Log.pm: - better print
+
+v 0.4: 1998-08-18  Dominique Dumont  <domi@barrayar.grenoble.hp.com>
+
+	* Log.pm: - added help support
+                  - better geometry handling
+
+
+1998-06-25  Dominique Dumont  <domi@barrayar.grenoble.hp.com>
+
+	* test.pl: cleanup traces
+
+1998-06-22  Dominique Dumont  <domi@barrayar.grenoble.hp.com>
+
+	* v 0.2: 
+	- added show function
+	- corrected doc bugs
+
+
+0.1  Wed Jul 23 17:02:08 1997
+	- original version; created by h2xs 1.18
+
