@@ -1,9 +1,9 @@
 ############################################################
 #
-# $Header: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_LogBody/RCS/LogBody.pm,v 1.2 1999/08/10 12:39:59 domi Exp $
+# $Header: /home/domi/perlDev/old/Puppet_LogBody/RCS/LogBody.pm,v 1.3 2007/09/20 12:55:03 domi Exp $
 #
-# $Source: /mnt/barrayar/d06/home/domi/Tools/perlDev/Puppet_LogBody/RCS/LogBody.pm,v $
-# $Revision: 1.2 $
+# $Source: /home/domi/perlDev/old/Puppet_LogBody/RCS/LogBody.pm,v $
+# $Revision: 1.3 $
 # $Locker:  $
 # 
 ############################################################
@@ -15,7 +15,7 @@ use Carp ;
 use strict ;
 use vars qw($VERSION) ;
 
-$VERSION = sprintf "%d.%03d", q$Revision: 1.2 $ =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%03d", q$Revision: 1.3 $ =~ /(\d+)\.(\d+)/;
 
 # see loadspecs for other names
 sub new 
@@ -164,9 +164,9 @@ a Tk Gui to manage it.
 
 =head1 AUTHOR
 
-Dominique Dumont, Dominique_Dumont@grenoble.hp.com
+Dominique Dumont, ddumont at cpan dot org.
 
-Copyright (c) 1998-1999 Dominique Dumont. All rights reserved.  This
+Copyright (c) 1998-1999,2007 Dominique Dumont. All rights reserved.  This
 program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 

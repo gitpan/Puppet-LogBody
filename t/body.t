@@ -8,7 +8,6 @@
 
 BEGIN { $| = 1; print "1..8\n"; }
 END {print "not ok 1\n" unless $loaded;}
-use Tk ;
 use ExtUtils::testlib;
 use Puppet::LogBody ;
 $loaded = 1;

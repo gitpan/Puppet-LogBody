@@ -1,3 +1,6 @@
+v1.003 2007-09-20 Dominique Dumont
+        * Fixed test that required Tk (not needed)
+
 v1.002 1999-08-10  Dominique Dumont  <domi@barrayar.grenoble.hp.com>
 
 	* LogBody.pm (log): - how can be set to undef in log method
